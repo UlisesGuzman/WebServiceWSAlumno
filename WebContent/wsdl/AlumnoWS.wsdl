@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.utng.edu.mx" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.utng.edu.mx" xmlns:intf="http://ws.utng.edu.mx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.utng.edu.mx" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="editAlumno">
+    <complexType>
+     <sequence>
+      <element name="alumno" type="impl:Alumno"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Alumno">
+    <sequence>
+     <element name="becado" type="xsd:boolean"/>
+     <element name="cveUniversidad" type="xsd:int"/>
+     <element name="fechaAlta" nillable="true" type="xsd:string"/>
+     <element name="generacion" type="xsd:int"/>
+     <element name="grupo" nillable="true" type="xsd:string"/>
+     <element name="matricula" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="notas" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="editAlumnoResponse">
+    <complexType>
+     <sequence>
+      <element name="editAlumnoReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="removeAlumno">
+    <complexType>
+     <sequence>
+      <element name="cveUniversidad" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="removeAlumnoResponse">
+    <complexType>
+     <sequence>
+      <element name="removeAlumnoReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addAlumno">
+    <complexType>
+     <sequence>
+      <element name="alumno" type="impl:Alumno"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addAlumnoResponse">
+    <complexType>
+     <sequence>
+      <element name="addAlumnoReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAlumnoById">
+    <complexType>
+     <sequence>
+      <element name="cveUniversidad" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAlumnoByIdResponse">
+    <complexType>
+     <sequence>
+      <element name="getAlumnoByIdReturn" type="impl:Alumno"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAlumnos">
+    <complexType/>
+   </element>
+   <element name="getAlumnosResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAlumnosReturn" type="impl:Alumno"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="editAlumnoRequest">
+
+      <wsdl:part element="impl:editAlumno" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeAlumnoRequest">
+
+      <wsdl:part element="impl:removeAlumno" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAlumnoByIdRequest">
+
+      <wsdl:part element="impl:getAlumnoById" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="editAlumnoResponse">
+
+      <wsdl:part element="impl:editAlumnoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAlumnosRequest">
+
+      <wsdl:part element="impl:getAlumnos" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeAlumnoResponse">
+
+      <wsdl:part element="impl:removeAlumnoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addAlumnoResponse">
+
+      <wsdl:part element="impl:addAlumnoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addAlumnoRequest">
+
+      <wsdl:part element="impl:addAlumno" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAlumnosResponse">
+
+      <wsdl:part element="impl:getAlumnosResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAlumnoByIdResponse">
+
+      <wsdl:part element="impl:getAlumnoByIdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AlumnoWS">
+
+      <wsdl:operation name="editAlumno">
+
+         <wsdl:input message="impl:editAlumnoRequest" name="editAlumnoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:editAlumnoResponse" name="editAlumnoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="removeAlumno">
+
+         <wsdl:input message="impl:removeAlumnoRequest" name="removeAlumnoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:removeAlumnoResponse" name="removeAlumnoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addAlumno">
+
+         <wsdl:input message="impl:addAlumnoRequest" name="addAlumnoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addAlumnoResponse" name="addAlumnoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAlumnoById">
+
+         <wsdl:input message="impl:getAlumnoByIdRequest" name="getAlumnoByIdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAlumnoByIdResponse" name="getAlumnoByIdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAlumnos">
+
+         <wsdl:input message="impl:getAlumnosRequest" name="getAlumnosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAlumnosResponse" name="getAlumnosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AlumnoWSSoapBinding" type="impl:AlumnoWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="editAlumno">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="editAlumnoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="editAlumnoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="removeAlumno">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="removeAlumnoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="removeAlumnoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addAlumno">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addAlumnoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addAlumnoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAlumnoById">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAlumnoByIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAlumnoByIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAlumnos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAlumnosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAlumnosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AlumnoWSService">
+
+      <wsdl:port binding="impl:AlumnoWSSoapBinding" name="AlumnoWS">
+
+         <wsdlsoap:address location="http://localhost:8080/WSAlumno/services/AlumnoWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

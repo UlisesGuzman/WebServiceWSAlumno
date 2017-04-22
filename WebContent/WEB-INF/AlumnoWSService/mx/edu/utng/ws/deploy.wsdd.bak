@@ -1,0 +1,48 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AlumnoWSService WSDL service -->
+
+  <service name="AlumnoWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.utng.edu.mx"/>
+      <parameter name="wsdlServiceElement" value="AlumnoWSService"/>
+      <parameter name="schemaQualified" value="http://ws.utng.edu.mx"/>
+      <parameter name="wsdlServicePort" value="AlumnoWS"/>
+      <parameter name="className" value="mx.edu.utng.ws.AlumnoWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="AlumnoWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="editAlumno" qname="operNS:editAlumno" xmlns:operNS="http://ws.utng.edu.mx" returnQName="retNS:editAlumnoReturn" xmlns:retNS="http://ws.utng.edu.mx" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:alumno" xmlns:pns="http://ws.utng.edu.mx" type="tns:Alumno" xmlns:tns="http://ws.utng.edu.mx"/>
+      </operation>
+      <operation name="removeAlumno" qname="operNS:removeAlumno" xmlns:operNS="http://ws.utng.edu.mx" returnQName="retNS:removeAlumnoReturn" xmlns:retNS="http://ws.utng.edu.mx" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:cveUniversidad" xmlns:pns="http://ws.utng.edu.mx" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addAlumno" qname="operNS:addAlumno" xmlns:operNS="http://ws.utng.edu.mx" returnQName="retNS:addAlumnoReturn" xmlns:retNS="http://ws.utng.edu.mx" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:alumno" xmlns:pns="http://ws.utng.edu.mx" type="tns:Alumno" xmlns:tns="http://ws.utng.edu.mx"/>
+      </operation>
+      <operation name="getAlumnoById" qname="operNS:getAlumnoById" xmlns:operNS="http://ws.utng.edu.mx" returnQName="retNS:getAlumnoByIdReturn" xmlns:retNS="http://ws.utng.edu.mx" returnType="rtns:Alumno" xmlns:rtns="http://ws.utng.edu.mx" soapAction="" >
+        <parameter qname="pns:cveUniversidad" xmlns:pns="http://ws.utng.edu.mx" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getAlumnos" qname="operNS:getAlumnos" xmlns:operNS="http://ws.utng.edu.mx" returnQName="retNS:getAlumnosReturn" xmlns:retNS="http://ws.utng.edu.mx" returnType="rtns:Alumno" xmlns:rtns="http://ws.utng.edu.mx" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="getAlumnos removeAlumno addAlumno editAlumno getAlumnoById"/>
+
+      <typeMapping
+        xmlns:ns="http://ws.utng.edu.mx"
+        qname="ns:Alumno"
+        type="java:mx.edu.utng.ws.Alumno"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
